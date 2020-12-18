@@ -1,6 +1,6 @@
 interactions:
 - request:
-    body: '{"UserInfoDelCond": {"EmployeeNoList": [{"employeeNo": "8"}]}}'
+    body: null
     headers:
       Accept:
       - '*/*'
@@ -8,20 +8,18 @@ interactions:
       - gzip, deflate
       Connection:
       - keep-alive
-      Content-Length:
-      - '62'
       User-Agent:
       - python-requests/2.25.1
-    method: PUT
-    uri: http://192.168.0.251/ISAPI/AccessControl/UserInfo/Delete?format=json
+    method: GET
+    uri: http://192.168.0.251/ISAPI/AccessControl/UserInfo/Count?format=json
   response:
     body:
-      string: "{\n\t\"requestURL\":\t\"/ISAPI/AccessControl/UserInfo/Delete?format=json\",\n\t\"statusCode\":\t1,\n\t\"statusString\":\t\"OK\",\n\t\"subStatusCode\":\t\"ok\"\n}"
+      string: "{\n\t\"UserInfoCount\":\t{\n\t\t\"userNumber\":\t7\n\t}\n}"
     headers:
       Connection:
       - keep-alive
       Content-Length:
-      - '134'
+      - '44'
       Content-Type:
       - application/json
       Date:

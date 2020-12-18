@@ -38,3 +38,10 @@ def test_person_delete():
     response = person_instance.delete(8)
     assert isinstance(response, SimpleNamespace)
     assert response.statusString == 'OK', "Successful response should be OK"
+
+@vcr.use_cassette('tests/vcr_cassettes/person-count.yml', filter_headers=['Authorization'])
+def test_person_count():
+    person_instance = api.Person()
+    response = person_instance.get_count()
+    assert isinstance(response, int)
+    assert response >= 0, "Count should be 0 or greater!"

@@ -89,3 +89,11 @@ class Person(object):
         print(response)
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
+
+    def get_count(self):
+        path = '/ISAPI/AccessControl/UserInfo/Count?format=json'
+        
+        response = session.get(path)
+        print(response)
+        result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
+        return result.UserInfoCount.userNumber
