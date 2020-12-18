@@ -31,7 +31,8 @@ obj/**
 .pytest_cache
 tmp/**
 .python-version
-.vs/
+.vscode/
+requests
 test-results*.xml
 xunit-test-results.xml
 build/ci/performance/performance-results.json
