@@ -21,6 +21,20 @@ def test_person_search(person_keys):
 @vcr.use_cassette('tests/vcr_cassettes/person-add.yml', filter_headers=['Authorization'])
 def test_person_add():
     person_instance = api.Person()
-    response = person_instance.add(7, 'testid7', 'normal', '12345', 'female')
+    response = person_instance.add(8, 'testid8', 'normal', '12345', 'female')
+    assert isinstance(response, SimpleNamespace)
+    assert response.statusString == 'OK', "Successful response should be OK"
+
+@vcr.use_cassette('tests/vcr_cassettes/person-update.yml', filter_headers=['Authorization'])
+def test_person_update():
+    person_instance = api.Person()
+    response = person_instance.update(8, 'testid888888', 'normal', '12345', 'female')
+    assert isinstance(response, SimpleNamespace)
+    assert response.statusString == 'OK', "Successful response should be OK"
+
+@vcr.use_cassette('tests/vcr_cassettes/person-delete.yml', filter_headers=['Authorization'])
+def test_person_delete():
+    person_instance = api.Person()
+    response = person_instance.delete(8)
     assert isinstance(response, SimpleNamespace)
     assert response.statusString == 'OK', "Successful response should be OK"

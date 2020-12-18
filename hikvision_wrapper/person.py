@@ -48,3 +48,44 @@ class Person(object):
         print(response)
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
+    
+    def delete(self, id):
+        path = '/ISAPI/AccessControl/UserInfo/Delete?format=json'
+        body = {
+                    "UserInfoDelCond": {                        
+                        "EmployeeNoList":[
+                            {
+                                "employeeNo": str(id)
+                            }
+                        ]
+                    }
+                }
+        response = session.put(path, data=json.dumps(body))
+        print(response)
+        result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
+        return result
+
+    def update(self, id, name, user_type, password, gender):
+        path = '/ISAPI/AccessControl/UserInfo/Modify?format=json'
+        body = {
+                    "UserInfo":
+                        {
+                            "employeeNo":str(id),
+                            "name": name,
+                            "userType": user_type,
+                            "Valid":{
+                                "enable": False,
+                                "beginTime":"2017-08-01T17:30:08",
+                                "endTime":"2022-08-01T17:30:08",
+                                "timeType":"local"
+                                },
+                            
+                            "password":password,
+                            
+                            "gender":gender
+                        }
+                }
+        response = session.put(path, data=json.dumps(body))
+        print(response)
+        result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
+        return result
