@@ -2,6 +2,7 @@
 .huskyrc.json
 out
 log.log
+**/__pycache__/
 **/node_modules
 *.pyc
 *.vsix
