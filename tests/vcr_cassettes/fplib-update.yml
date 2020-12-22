@@ -1,8 +1,6 @@
 interactions:
 - request:
-    body: '{"UserInfo": {"employeeNo": "8", "name": "testid8", "userType": "normal",
-      "Valid": {"enable": false, "beginTime": "2017-08-01T17:30:08", "endTime": "2022-08-01T17:30:08",
-      "timeType": "local"}, "password": "12345", "gender": "female"}}'
+    body: '{"name": "CustomTestLibraryBlackFD", "customInfo": "test libraryBlackFD"}'
     headers:
       Accept:
       - '*/*'
@@ -11,19 +9,19 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '234'
+      - '73'
       User-Agent:
       - python-requests/2.25.1
-    method: POST
-    uri: http://192.168.0.251/ISAPI/AccessControl/UserInfo/Record?format=json
+    method: PUT
+    uri: http://192.168.0.251/ISAPI/Intelligent/FDLib?format=json&FDID=1&faceLibType=blackFD
   response:
     body:
-      string: "{\n\t\"requestURL\":\t\"/ISAPI/AccessControl/UserInfo/Record?format=json\",\n\t\"statusCode\":\t1,\n\t\"statusString\":\t\"OK\",\n\t\"subStatusCode\":\t\"ok\"\n}"
+      string: "{\n\t\"requestURL\":\t\"/ISAPI/Intelligent/FDLib?format=json&FDID=1&faceLibType=blackFD\",\n\t\"statusCode\":\t1,\n\t\"statusString\":\t\"OK\",\n\t\"subStatusCode\":\t\"ok\"\n}"
     headers:
       Connection:
       - keep-alive
       Content-Length:
-      - '134'
+      - '149'
       Content-Type:
       - application/json
       Date:

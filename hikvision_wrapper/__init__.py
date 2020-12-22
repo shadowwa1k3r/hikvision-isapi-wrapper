@@ -20,3 +20,4 @@ session.auth = auth
     
 
 from .person import Person
+from .fplib import FaceData, FaceDataLib

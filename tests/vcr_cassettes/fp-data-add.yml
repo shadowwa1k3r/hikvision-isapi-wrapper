@@ -1,0 +1,82 @@
+interactions:
+- request:
+    body: '{"faceLibType": "blackFD", "FDID": "1", "FPID": "4", "name": "tessst",
+      "gender": "male", "bornTime": "19940226T000000+0500", "city": "Tashkent", "faceURL":
+      "https://i.ibb.co/P9rJSTQ/murod.jpg"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '193'
+      User-Agent:
+      - python-requests/2.25.1
+    method: POST
+    uri: http://192.168.0.251/ISAPI/Intelligent/FDLib/FaceDataRecord?format=json
+  response:
+    body:
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<userCheck version=\"2.0\"
+        xmlns=\"http://www.isapi.org/ver20/XMLSchema\">\r\n<statusValue>401</statusValue>\r\n<statusString>Unauthorized</statusString>\r\n<isActivated>false</isActivated>\r\n</userCheck>\r\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '235'
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 19 Dec 2020 14:38:50 GMT
+      Keep-Alive:
+      - timeout=8, max=99
+      Server:
+      - webs
+      WWW-Authenticate:
+      - Digest qop="auth", realm="DS-317D433B", nonce="OWMwNjZjZDBlZDQ3NzZlMmNkY2NiMjNhOWZmMDMwNDQ=",
+        stale="false", opaque="", domain="::"
+      X-Frame-Options:
+      - SAMEORIGIN
+    status:
+      code: 401
+      message: Unauthorized
+- request:
+    body: '{"faceLibType": "blackFD", "FDID": "1", "FPID": "4", "name": "tessst",
+      "gender": "male", "bornTime": "19940226T000000+0500", "city": "Tashkent", "faceURL":
+      "https://i.ibb.co/P9rJSTQ/murod.jpg"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '193'
+      User-Agent:
+      - python-requests/2.25.1
+    method: POST
+    uri: http://192.168.0.251/ISAPI/Intelligent/FDLib/FaceDataRecord?format=json
+  response:
+    body:
+      string: "{\n\t\"requestURL\":\t\"/ISAPI/Intelligent/FDLib/FaceDataRecord?format=json\",\n\t\"statusCode\":\t1,\n\t\"statusString\":\t\"OK\",\n\t\"subStatusCode\":\t\"ok\",\n\t\"FPID\":\t\"4\"\n}"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '151'
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 19 Dec 2020 14:38:51 GMT
+      Keep-Alive:
+      - timeout=8, max=98
+      Server:
+      - webs
+      X-Frame-Options:
+      - SAMEORIGIN
+    status:
+      code: 200
+      message: OK
+version: 1

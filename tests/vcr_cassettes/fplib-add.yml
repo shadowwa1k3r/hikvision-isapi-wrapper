@@ -1,6 +1,6 @@
 interactions:
 - request:
-    body: '{"UserInfoDelCond": {"EmployeeNoList": [{"employeeNo": "8"}]}}'
+    body: '{"faceLibType": "blackFD", "name": "testfplib2", "customInfo": "testcustominfo"}'
     headers:
       Accept:
       - '*/*'
@@ -9,19 +9,20 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '62'
+      - '80'
       User-Agent:
       - python-requests/2.25.1
-    method: PUT
-    uri: http://192.168.0.251/ISAPI/AccessControl/UserInfo/Delete?format=json
+    method: POST
+    uri: http://192.168.0.251/ISAPI/Intelligent/FDLib?format=json
   response:
     body:
-      string: "{\n\t\"requestURL\":\t\"/ISAPI/AccessControl/UserInfo/Delete?format=json\",\n\t\"statusCode\":\t1,\n\t\"statusString\":\t\"OK\",\n\t\"subStatusCode\":\t\"ok\"\n}"
+      string: "{\n\t\"requestURL\":\t\"/ISAPI/Intelligent/FDLib?format=json\",\n\t\"statusCode\":\t6,\n\t\"statusString\":\t\"Invalid
+        Content\",\n\t\"subStatusCode\":\t\"faceLibraryNumError\",\n\t\"errorCode\":\t1610612781,\n\t\"errorMsg\":\t\"name\"\n}"
     headers:
       Connection:
       - keep-alive
       Content-Length:
-      - '134'
+      - '199'
       Content-Type:
       - application/json
       Date:
@@ -33,6 +34,6 @@ interactions:
       X-Frame-Options:
       - SAMEORIGIN
     status:
-      code: 200
-      message: OK
+      code: 400
+      message: Bad Request
 version: 1

@@ -17,47 +17,6 @@ interactions:
     uri: http://192.168.0.251/ISAPI/AccessControl/UserInfo/Search?format=json
   response:
     body:
-      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<userCheck version=\"2.0\"
-        xmlns=\"http://www.isapi.org/ver20/XMLSchema\">\r\n<statusValue>401</statusValue>\r\n<statusString>Unauthorized</statusString>\r\n<isActivated>false</isActivated>\r\n</userCheck>\r\n"
-    headers:
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '235'
-      Content-Type:
-      - application/json
-      Date:
-      - Fri, 18 Dec 2020 16:30:20 GMT
-      Keep-Alive:
-      - timeout=8, max=99
-      Server:
-      - webs
-      WWW-Authenticate:
-      - Digest qop="auth", realm="DS-317D433B", nonce="NTZmN2MzYTc2Y2EyN2Q3YjQ0MmI3OTNjYTQ1N2U5MjE=",
-        stale="false", opaque="", domain="::"
-      X-Frame-Options:
-      - SAMEORIGIN
-    status:
-      code: 401
-      message: Unauthorized
-- request:
-    body: '{"UserInfoSearchCond": {"searchID": "4", "searchResultPosition": 0, "maxResults":
-      32, "EmployeeNoList": [{"employeeNo": "4"}]}}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '127'
-      User-Agent:
-      - python-requests/2.25.1
-    method: POST
-    uri: http://192.168.0.251/ISAPI/AccessControl/UserInfo/Search?format=json
-  response:
-    body:
       string: "{\n\t\"UserInfoSearch\":\t{\n\t\t\"searchID\":\t\"4\",\n\t\t\"responseStatusStrg\":\t\"OK\",\n\t\t\"numOfMatches\":\t1,\n\t\t\"totalMatches\":\t1,\n\t\t\"UserInfo\":\t[{\n\t\t\t\t\"employeeNo\":\t\"4\",\n\t\t\t\t\"name\":\t\"test\",\n\t\t\t\t\"userType\":\t\"normal\",\n\t\t\t\t\"closeDelayEnabled\":\tfalse,\n\t\t\t\t\"Valid\":\t{\n\t\t\t\t\t\"enable\":\ttrue,\n\t\t\t\t\t\"beginTime\":\t\"2017-08-01T17:30:08\",\n\t\t\t\t\t\"endTime\":\t\"2022-08-01T17:30:08\",\n\t\t\t\t\t\"timeType\":\t\"local\"\n\t\t\t\t},\n\t\t\t\t\"belongGroup\":\t\"\",\n\t\t\t\t\"password\":\t\"12345\",\n\t\t\t\t\"doorRight\":\t\"\",\n\t\t\t\t\"RightPlan\":\t[{\n\t\t\t\t\t\t\"doorNo\":\t1,\n\t\t\t\t\t\t\"planTemplateNo\":\t\"\"\n\t\t\t\t\t}],\n\t\t\t\t\"maxOpenDoorTime\":\t0,\n\t\t\t\t\"openDoorTime\":\t0,\n\t\t\t\t\"roomNumber\":\t0,\n\t\t\t\t\"floorNumber\":\t0,\n\t\t\t\t\"localUIRight\":\tfalse,\n\t\t\t\t\"numOfCard\":\t0,\n\t\t\t\t\"numOfFP\":\t0,\n\t\t\t\t\"numOfFace\":\t0\n\t\t\t}]\n\t}\n}"
     headers:
       Connection:
@@ -67,9 +26,9 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 18 Dec 2020 16:30:20 GMT
+      - Sat, 19 Dec 2020 14:38:53 GMT
       Keep-Alive:
-      - timeout=8, max=98
+      - timeout=8, max=99
       Server:
       - webs
       X-Frame-Options:
