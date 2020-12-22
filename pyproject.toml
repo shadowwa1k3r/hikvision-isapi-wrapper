@@ -9,6 +9,7 @@ python = "^3.8"
 requests = "^2.25.1"
 pytest = "^6.2.1"
 vcrpy = "^4.1.1"
+redis = "^3.5.3"
 
 [tool.poetry.dev-dependencies]
 

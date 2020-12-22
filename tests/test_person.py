@@ -1,5 +1,5 @@
 from types import SimpleNamespace
-import hikvision_wrapper as api
+import hikvision_isapi_wrapper as api
 from pytest import fixture
 import vcr
 
