@@ -5,6 +5,9 @@ import threading
 
 class Event(object):
     
+    def __init__(self):
+        self._stop = False    
+    
     def start_listen_events(self, _callback):
         self._callback = _callback
         x = threading.Thread(target=self._start_listen_events,)        
@@ -61,4 +64,5 @@ class Event(object):
                             rsp["employee_id"] = int(dic["AccessControllerEvent"]["employeeNoString"])
                         self._callback(rsp)
                     response_buffer = b""
-                    return 0
+                    if self._stop:
+                        return 0
