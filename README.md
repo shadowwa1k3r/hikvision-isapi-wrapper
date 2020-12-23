@@ -4,7 +4,7 @@
 
   - Add/Edit/Delete/Search employee to access control terminal
   - Add/Edit/Delete Face libraries and photos to employees
-  - Listen real-time events from device and write it to redis
+  - Listen real-time events from device via callback function
 
 ### Installation
 
