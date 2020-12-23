@@ -1,27 +1,23 @@
 from . import session
 import json
-import redis
 import threading
 
 
 class Event(object):
-
-    def add_event(self, pool, event):        
-        pool.set(f'event_{event["date"]}', json.dumps(event))
-
     
-    def start_listen_events(self):        
-        x = threading.Thread(target=self._start_listen_events,)
+    def start_listen_events(self, _callback):
+        self._callback = _callback
+        x = threading.Thread(target=self._start_listen_events,)        
         x.start()
-        
+
+    def stop_listen_events(self):
+        self._stop = True
 
     def _start_listen_events(self):
-        pool = redis.Redis()
-        
         path = '/ISAPI/Event/notification/alertStream'
         response = session.get(path, stream=True)
         response.raise_for_status()
-        rsp_list = []
+        
         in_header = False             # are we parsing headers at the moment
         grabbing_response = False     # are we grabbing the response at the moment
         response_size = 0             # the response size that we take from Content-Length
@@ -63,7 +59,6 @@ class Event(object):
                         }
                         if rsp["status"] == "checkIn":
                             rsp["employee_id"] = int(dic["AccessControllerEvent"]["employeeNoString"])
-                        self.add_event(pool, rsp)                        
+                        self._callback(rsp)
                     response_buffer = b""
-        return rsp_list
-
+                    return 0

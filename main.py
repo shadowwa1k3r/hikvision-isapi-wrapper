@@ -9,6 +9,9 @@ import hikvision_isapi_wrapper as client
 # print(person.UserInfoSearch.UserInfo[0].name)
 # new_person = person_instance.add(6, 'test6', 'normal', '12345', 'male')
 
+def callback(event):
+    print(event['date'])
+
 event_instance = client.Event()
-event_instance.start_listen_events()
+event_instance.start_listen_events(callback)
 print('------------------------------------------endofmain-------------------------------------')
