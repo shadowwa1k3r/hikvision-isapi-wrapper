@@ -25,7 +25,7 @@ class Person(object):
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
-    def add(self, id, name, user_type, password, gender):
+    def add(self, id, name, user_type, password, gender, doors):
         path = '/ISAPI/AccessControl/UserInfo/Record?format=json'
         body = {
                     "UserInfo":
@@ -39,6 +39,7 @@ class Person(object):
                                 "endTime":"2022-08-01T17:30:08",
                                 "timeType":"local"
                                 },
+                            "doorRight": doors,
                             
                             "password":password,
                             
@@ -64,7 +65,7 @@ class Person(object):
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
-    def update(self, id, name, user_type, password, gender):
+    def update(self, id, name, user_type, password, gender, doors):
         path = '/ISAPI/AccessControl/UserInfo/Modify?format=json'
         body = {
                     "UserInfo":
@@ -78,6 +79,7 @@ class Person(object):
                                 "endTime":"2022-08-01T17:30:08",
                                 "timeType":"local"
                                 },
+                            "doorRight": doors,
                             
                             "password":password,
                             
