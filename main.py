@@ -14,4 +14,6 @@ def callback(event):
 
 event_instance = client.Event()
 event_instance.start_listen_events(callback)
+print(event_instance.get_status())
+print(event_instance.stop_listen_events())
 print('------------------------------------------endofmain-------------------------------------')

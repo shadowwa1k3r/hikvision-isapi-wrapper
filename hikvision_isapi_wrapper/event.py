@@ -15,6 +15,9 @@ class Event(object):
 
     def stop_listen_events(self):
         self._stop = True
+    
+    def get_status(self):
+        return not self._stop
 
     def _start_listen_events(self):
         path = '/ISAPI/Event/notification/alertStream'
@@ -53,6 +56,7 @@ class Event(object):
                 if len(response_buffer) >= response_size:
                     # time to convert it json and return it
                     grabbing_response = False
+                    print(response_buffer)
                     dic = json.loads(response_buffer)
                     
                     if dic["eventType"] == "AccessControllerEvent":
