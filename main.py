@@ -12,8 +12,11 @@ import hikvision_isapi_wrapper as client
 def callback(event):
     print(event['date'])
 
-event_instance = client.Event()
-event_instance.start_listen_events(callback)
-print(event_instance.get_status())
-print(event_instance.stop_listen_events())
+# event_instance = client.Event()
+# event_instance.start_listen_events(callback)
+# print(event_instance.get_status())
+# print(event_instance.stop_listen_events())
+fd = client.FaceData()
+res = fd.face_data_search('blackFD', '1', 39)
+print(res)
 print('------------------------------------------endofmain-------------------------------------')

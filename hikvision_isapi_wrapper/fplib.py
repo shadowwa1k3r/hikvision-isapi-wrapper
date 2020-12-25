@@ -96,6 +96,6 @@ class FaceData(object):
             "FDID": f'{FDID}',
             "FPID": f'{FPID}'
             }
-        response = session.put(path, data=json.dumps(body))
+        response = session.post(path, data=json.dumps(body))
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
