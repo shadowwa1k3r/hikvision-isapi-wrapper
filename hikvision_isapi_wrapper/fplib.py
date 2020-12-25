@@ -87,6 +87,15 @@ class FaceData(object):
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
-    def face_data_search(self):
-        #ToDo
-        pass
+    def face_data_search(self, faceLibType, FDID, FPID):
+        path = f'/ISAPI/Intelligent/FDLib/FDSearch?format=json'
+        body = {
+            "searchResultPosition": 0,
+            "maxResults": 32,
+            "faceLibType": f'{faceLibType}',
+            "FDID": f'{FDID}',
+            "FPID": f'{FPID}'
+            }
+        response = session.put(path, data=json.dumps(body))
+        result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
+        return result

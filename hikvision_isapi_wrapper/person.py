@@ -40,6 +40,12 @@ class Person(object):
                                 "timeType":"local"
                                 },
                             "doorRight": doors,
+                            "RightPlan": [
+                                {
+                                    "doorNo": 1,
+                                    "planTemplateNo": "1"
+                                }
+                            ],
                             
                             "password":password,
                             
@@ -80,6 +86,12 @@ class Person(object):
                                 "timeType":"local"
                                 },
                             "doorRight": doors,
+                            "RightPlan": [
+                                {
+                                    "doorNo": 1,
+                                    "planTemplateNo": "1"
+                                }
+                            ],
                             
                             "password":password,
                             
