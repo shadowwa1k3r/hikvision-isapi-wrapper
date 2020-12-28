@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
   name = 'hikvision_isapi_wrapper',
   packages = ['hikvision_isapi_wrapper'],
-  version = '0.2.6',
+  version = '0.2.7',
   license='MIT',
   description = 'Minimial API wrapper for hikvison ISAPI',
   author = 'shadowwa1k3r',
