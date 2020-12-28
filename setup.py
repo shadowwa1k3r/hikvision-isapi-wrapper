@@ -8,7 +8,7 @@ setup(
   author = 'shadowwa1k3r',
   author_email = 'ergash1994@gmail.com',
   url = 'https://github.com/shadowwa1k3r/hikvision-isapi-wrapper',
-  download_url = 'https://github.com/shadowwa1k3r/hikvision-isapi-wrapper/archive/v_026.tar.gz',
+  download_url = 'https://github.com/shadowwa1k3r/hikvision-isapi-wrapper/archive/v_027.tar.gz',
   keywords = ['hikvision', 'ISAPI', 'wrapper'],
   install_requires=[
           'atomicwrites==1.4.0',
