@@ -51,9 +51,11 @@ class Event(object):
                     grabbing_response = True
 
             elif grabbing_response:
-                response_buffer += chunk + b"\n"
+                response_buffer += chunk
 
-                if len(response_buffer) >= response_size:
+                if len(response_buffer) != response_size:
+                    response_buffer += b"\n"
+                else:
                     # time to convert it json and return it
                     grabbing_response = False
                     print(response_buffer)
