@@ -2,13 +2,13 @@ from distutils.core import setup
 setup(
   name = 'hikvision_isapi_wrapper',
   packages = ['hikvision_isapi_wrapper'],
-  version = '0.2.7',
+  version = '0.2.8',
   license='MIT',
   description = 'Minimial API wrapper for hikvison ISAPI',
   author = 'shadowwa1k3r',
   author_email = 'ergash1994@gmail.com',
   url = 'https://github.com/shadowwa1k3r/hikvision-isapi-wrapper',
-  download_url = 'https://github.com/shadowwa1k3r/hikvision-isapi-wrapper/archive/v_027.tar.gz',
+  download_url = 'https://github.com/shadowwa1k3r/hikvision-isapi-wrapper/archive/v_028.tar.gz',
   keywords = ['hikvision', 'ISAPI', 'wrapper'],
   install_requires=[
           'atomicwrites==1.4.0',

@@ -1,4 +1,4 @@
-from . import session
+from . import session, session2
 import json
 from types import SimpleNamespace
 
@@ -13,6 +13,7 @@ class FaceDataLib(object):
             'customInfo': customInfo
         }
         response = session.post(path, data=json.dumps(body))
+        response2 = session2.post(path, data=json.dumps(body))
 
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
@@ -24,6 +25,7 @@ class FaceDataLib(object):
             "customInfo": "test libraryBlackFD"
             }
         response = session.put(path, data=json.dumps(body))
+        response2 = session2.put(path, data=json.dumps(body))
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
@@ -31,6 +33,7 @@ class FaceDataLib(object):
         path = f'/ISAPI/Intelligent/FDLib?format=json&FDID={fdid}&faceLibType={faceLibType}'
         
         response = session.delete(path)
+        response2 = session2.delete(path)
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
@@ -56,6 +59,7 @@ class FaceData(object):
             "faceURL": faceURL
             }
         response = session.post(path, data=json.dumps(body))
+        response2 = session2.post(path, data=json.dumps(body))
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
@@ -69,6 +73,7 @@ class FaceData(object):
             "faceURL": faceURL
             }
         response = session.put(path, data=json.dumps(body))
+        response2 = session2.put(path, data=json.dumps(body))
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
@@ -84,6 +89,7 @@ class FaceData(object):
             }
              
         response = session.put(path, data=json.dumps(body))
+        response2 = session2.put(path, data=json.dumps(body))
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 

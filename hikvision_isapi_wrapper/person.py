@@ -1,4 +1,4 @@
-from . import session
+from . import session, session2
 import json
 from types import SimpleNamespace
 
@@ -52,7 +52,8 @@ class Person(object):
                             "gender":gender
                         }
                 }
-        response = session.post(path, data=json.dumps(body))        
+        response = session.post(path, data=json.dumps(body))
+        response2 = session2.post(path, data=json.dumps(body))
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
     
@@ -67,7 +68,8 @@ class Person(object):
                         ]
                     }
                 }
-        response = session.put(path, data=json.dumps(body))        
+        response = session.put(path, data=json.dumps(body))
+        response2 = session2.put(path, data=json.dumps(body))
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
@@ -98,7 +100,8 @@ class Person(object):
                             "gender":gender
                         }
                 }
-        response = session.put(path, data=json.dumps(body))        
+        response = session.put(path, data=json.dumps(body))
+        response2 = session2.put(path, data=json.dumps(body))
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
