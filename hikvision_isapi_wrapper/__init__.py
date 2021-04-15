@@ -24,6 +24,7 @@ auth = HTTPDigestAuth(HIKVISION_ACT_LOGIN, HIKVISION_ACT_PASSWORD)
 session = LiveServerSession(HIKVISION_ACT_HOST)
 session2 = LiveServerSession(HIKVISION_ACT_HOST2)
 session.auth = auth
+session2.auth = auth
 
 from .person import Person
 from .fplib import FaceData, FaceDataLib
