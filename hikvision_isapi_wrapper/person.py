@@ -26,8 +26,9 @@ class Person(object):
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
-    def add(self, id, name, user_type, password, gender, doors, host):
-        path = host+'/ISAPI/AccessControl/UserInfo/Record?format=json'
+    def add(self, id, name, user_type, password, gender, doors, host1, host2):
+        path1 = host1+'/ISAPI/AccessControl/UserInfo/Record?format=json'
+        path2 = host2+'/ISAPI/AccessControl/UserInfo/Record?format=json'
         body = {
                     "UserInfo":
                         {
@@ -53,7 +54,8 @@ class Person(object):
                             "gender":gender
                         }
                 }
-        response = requests.post(path, data=json.dumps(body), auth=auth)
+        response = requests.post(path1, data=json.dumps(body), auth=auth)
+        response2 = requests.post(path2, data=json.dumps(body), auth=auth)
         
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
@@ -74,8 +76,9 @@ class Person(object):
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
-    def update(self, id, name, user_type, password, gender, doors, host):
-        path = host+'/ISAPI/AccessControl/UserInfo/Modify?format=json'
+    def update(self, id, name, user_type, password, gender, doors, host1, host2):
+        path1 = host1+'/ISAPI/AccessControl/UserInfo/Modify?format=json'
+        path2 = host2+'/ISAPI/AccessControl/UserInfo/Modify?format=json'
         body = {
                     "UserInfo":
                         {
@@ -101,8 +104,8 @@ class Person(object):
                             "gender":gender
                         }
                 }
-        response = requests.put(path, data=json.dumps(body), auth=auth)
-        
+        response = requests.put(path1, data=json.dumps(body), auth=auth)
+        response2 = requests.put(path2, data=json.dumps(body), auth=auth)
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
