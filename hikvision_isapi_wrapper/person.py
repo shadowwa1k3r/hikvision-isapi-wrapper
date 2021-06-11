@@ -1,4 +1,4 @@
-from . import session, session2
+from . import session
 import json
 from types import SimpleNamespace
 
@@ -7,8 +7,8 @@ class Person(object):
     def __init__(self):
         pass
 
-    def search(self, id):
-        path = '/ISAPI/AccessControl/UserInfo/Search?format=json'
+    def search(self, id, host):
+        path = host+'/ISAPI/AccessControl/UserInfo/Search?format=json'
         body = {
                     "UserInfoSearchCond": {
                         "searchID": "4",
@@ -25,8 +25,8 @@ class Person(object):
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
-    def add(self, id, name, user_type, password, gender, doors):
-        path = '/ISAPI/AccessControl/UserInfo/Record?format=json'
+    def add(self, id, name, user_type, password, gender, doors, host):
+        path = host+'/ISAPI/AccessControl/UserInfo/Record?format=json'
         body = {
                     "UserInfo":
                         {
@@ -53,12 +53,12 @@ class Person(object):
                         }
                 }
         response = session.post(path, data=json.dumps(body))
-        response2 = session2.post(path, data=json.dumps(body))
+        
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
     
-    def delete(self, id):
-        path = '/ISAPI/AccessControl/UserInfo/Delete?format=json'
+    def delete(self, id, host):
+        path = host+'/ISAPI/AccessControl/UserInfo/Delete?format=json'
         body = {
                     "UserInfoDelCond": {                        
                         "EmployeeNoList":[
@@ -69,12 +69,12 @@ class Person(object):
                     }
                 }
         response = session.put(path, data=json.dumps(body))
-        response2 = session2.put(path, data=json.dumps(body))
+        
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
-    def update(self, id, name, user_type, password, gender, doors):
-        path = '/ISAPI/AccessControl/UserInfo/Modify?format=json'
+    def update(self, id, name, user_type, password, gender, doors, host):
+        path = host+'/ISAPI/AccessControl/UserInfo/Modify?format=json'
         body = {
                     "UserInfo":
                         {
@@ -101,12 +101,12 @@ class Person(object):
                         }
                 }
         response = session.put(path, data=json.dumps(body))
-        response2 = session2.put(path, data=json.dumps(body))
+        
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
-    def get_count(self):
-        path = '/ISAPI/AccessControl/UserInfo/Count?format=json'
+    def get_count(self, host):
+        path = host+'/ISAPI/AccessControl/UserInfo/Count?format=json'
         
         response = session.get(path)        
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))

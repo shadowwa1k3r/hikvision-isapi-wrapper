@@ -1,25 +1,25 @@
-from . import session, session2
+from . import session
 import json
 from types import SimpleNamespace
 
 
 class FaceDataLib(object):
 
-    def fp_library_add(self, faceLibType, name, customInfo):
-        path = '/ISAPI/Intelligent/FDLib?format=json'
+    def fp_library_add(self, faceLibType, name, customInfo, host):
+        path = host+'/ISAPI/Intelligent/FDLib?format=json'
         body = {
             'faceLibType': faceLibType,
             'name': name,
             'customInfo': customInfo
         }
         response = session.post(path, data=json.dumps(body))
-        response2 = session2.post(path, data=json.dumps(body))
+        
 
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
-    def fp_library_update(self, fdid, faceLibType, name, customInfo):
-        path = f'/ISAPI/Intelligent/FDLib?format=json&FDID={fdid}&faceLibType={faceLibType}'
+    def fp_library_update(self, fdid, faceLibType, name, customInfo, host):
+        path = f'{host}/ISAPI/Intelligent/FDLib?format=json&FDID={fdid}&faceLibType={faceLibType}'
         body = {
             "name": "CustomTestLibraryBlackFD",
             "customInfo": "test libraryBlackFD"
@@ -29,16 +29,16 @@ class FaceDataLib(object):
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
-    def fp_library_delete(self, fdid, faceLibType):
-        path = f'/ISAPI/Intelligent/FDLib?format=json&FDID={fdid}&faceLibType={faceLibType}'
+    def fp_library_delete(self, fdid, faceLibType, host):
+        path = f'{host}/ISAPI/Intelligent/FDLib?format=json&FDID={fdid}&faceLibType={faceLibType}'
         
         response = session.delete(path)
         response2 = session2.delete(path)
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
-    def fp_library_list(self):
-        path = '/ISAPI/Intelligent/FDLib?format=json'
+    def fp_library_list(self, host):
+        path = '{host}/ISAPI/Intelligent/FDLib?format=json'
         response = session.get(path)
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
@@ -46,8 +46,8 @@ class FaceDataLib(object):
 
 class FaceData(object):
     
-    def face_data_add(self, faceLibType, FDID, FPID, name, gender, bornTime, city, faceURL):
-        path = '/ISAPI/Intelligent/FDLib/FaceDataRecord?format=json'
+    def face_data_add(self, faceLibType, FDID, FPID, name, gender, bornTime, city, faceURL, host):
+        path = host+'/ISAPI/Intelligent/FDLib/FaceDataRecord?format=json'
         body = {
             "faceLibType": faceLibType,
             "FDID": str(FDID),
@@ -59,12 +59,13 @@ class FaceData(object):
             "faceURL": faceURL
             }
         response = session.post(path, data=json.dumps(body))
-        response2 = session2.post(path, data=json.dumps(body))
+        
+        
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
-    def face_data_update(self, faceLibType, FDID, FPID, name, gender, bornTime, city, faceURL):
-        path = f'/ISAPI/Intelligent/FDLib/FDSearch?format=json&FDID={FDID}&FPID={FPID}&faceLibType={faceLibType}'
+    def face_data_update(self, faceLibType, FDID, FPID, name, gender, bornTime, city, faceURL, host):
+        path = f'{host}/ISAPI/Intelligent/FDLib/FDSearch?format=json&FDID={FDID}&FPID={FPID}&faceLibType={faceLibType}'
         body = {
             "name": name,
             "gender": gender,
@@ -73,12 +74,12 @@ class FaceData(object):
             "faceURL": faceURL
             }
         response = session.put(path, data=json.dumps(body))
-        response2 = session2.put(path, data=json.dumps(body))
+        
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
-    def face_data_delete(self, faceLibType, FDID, FPIDList):
-        path = f'/ISAPI/Intelligent/FDLib/FDSearch/Delete?format=json&FDID={FDID}&faceLibType={faceLibType}'
+    def face_data_delete(self, faceLibType, FDID, FPIDList, host):
+        path = f'{host}/ISAPI/Intelligent/FDLib/FDSearch/Delete?format=json&FDID={FDID}&faceLibType={faceLibType}'
         fpidlist = []
         for fpid in FPIDList:
             fpidlist.append({
@@ -89,12 +90,12 @@ class FaceData(object):
             }
              
         response = session.put(path, data=json.dumps(body))
-        response2 = session2.put(path, data=json.dumps(body))
+        
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
-    def face_data_search(self, faceLibType, FDID, FPID):
-        path = f'/ISAPI/Intelligent/FDLib/FDSearch?format=json'
+    def face_data_search(self, faceLibType, FDID, FPID, host):
+        path = f'{host}/ISAPI/Intelligent/FDLib/FDSearch?format=json'
         body = {
             "searchResultPosition": 0,
             "maxResults": 32,
