@@ -25,7 +25,7 @@ class FaceDataLib(object):
             "customInfo": "test libraryBlackFD"
             }
         response = session.put(path, data=json.dumps(body))
-        response2 = session2.put(path, data=json.dumps(body))
+        
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
@@ -33,7 +33,7 @@ class FaceDataLib(object):
         path = f'{host}/ISAPI/Intelligent/FDLib?format=json&FDID={fdid}&faceLibType={faceLibType}'
         
         response = session.delete(path)
-        response2 = session2.delete(path)
+        
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
