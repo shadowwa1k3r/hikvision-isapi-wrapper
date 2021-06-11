@@ -1,4 +1,5 @@
-from . import session
+from . import auth
+import requests
 import json
 from types import SimpleNamespace
 
@@ -12,7 +13,7 @@ class FaceDataLib(object):
             'name': name,
             'customInfo': customInfo
         }
-        response = session.post(path, data=json.dumps(body))
+        response = requests.post(path, data=json.dumps(body), auth=auth)
         
 
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
@@ -24,7 +25,7 @@ class FaceDataLib(object):
             "name": "CustomTestLibraryBlackFD",
             "customInfo": "test libraryBlackFD"
             }
-        response = session.put(path, data=json.dumps(body))
+        response = requests.put(path, data=json.dumps(body), auth=auth)
         
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
@@ -32,14 +33,14 @@ class FaceDataLib(object):
     def fp_library_delete(self, fdid, faceLibType, host):
         path = f'{host}/ISAPI/Intelligent/FDLib?format=json&FDID={fdid}&faceLibType={faceLibType}'
         
-        response = session.delete(path)
+        response = requests.delete(path, auth=auth)
         
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
     def fp_library_list(self, host):
         path = '{host}/ISAPI/Intelligent/FDLib?format=json'
-        response = session.get(path)
+        response = requests.get(path, auth=auth)
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
@@ -58,7 +59,7 @@ class FaceData(object):
             "city": city,
             "faceURL": faceURL
             }
-        response = session.post(path, data=json.dumps(body))
+        response = requests.post(path, data=json.dumps(body), auth=auth)
         
         
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
@@ -73,7 +74,7 @@ class FaceData(object):
             "city": city,
             "faceURL": faceURL
             }
-        response = session.put(path, data=json.dumps(body))
+        response = requests.put(path, data=json.dumps(body), auth=auth)
         
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
@@ -89,7 +90,7 @@ class FaceData(object):
             'FPID': fpidlist
             }
              
-        response = session.put(path, data=json.dumps(body))
+        response = requests.put(path, data=json.dumps(body), auth=auth)
         
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
@@ -103,6 +104,6 @@ class FaceData(object):
             "FDID": f'{FDID}',
             "FPID": f'{FPID}'
             }
-        response = session.post(path, data=json.dumps(body))
+        response = requests.post(path, data=json.dumps(body), auth=auth)
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result

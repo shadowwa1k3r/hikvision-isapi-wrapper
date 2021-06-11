@@ -1,4 +1,5 @@
-from . import session
+from . import auth
+import requests
 import json
 from types import SimpleNamespace
 
@@ -21,7 +22,7 @@ class Person(object):
                         ]
                     }
                 }
-        response = session.post(path, data=json.dumps(body))
+        response = requests.post(path, data=json.dumps(body), auth=auth)
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
 
@@ -52,7 +53,7 @@ class Person(object):
                             "gender":gender
                         }
                 }
-        response = session.post(path, data=json.dumps(body))
+        response = requests.post(path, data=json.dumps(body), auth=auth)
         
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
@@ -68,7 +69,7 @@ class Person(object):
                         ]
                     }
                 }
-        response = session.put(path, data=json.dumps(body))
+        response = requests.put(path, data=json.dumps(body), auth=auth)
         
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
@@ -100,7 +101,7 @@ class Person(object):
                             "gender":gender
                         }
                 }
-        response = session.put(path, data=json.dumps(body))
+        response = requests.put(path, data=json.dumps(body), auth=auth)
         
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result
@@ -108,6 +109,6 @@ class Person(object):
     def get_count(self, host):
         path = host+'/ISAPI/AccessControl/UserInfo/Count?format=json'
         
-        response = session.get(path)        
+        response = requests.get(path, auth=auth)
         result = json.loads(json.dumps(response.json()), object_hook=lambda d: SimpleNamespace(**d))
         return result.UserInfoCount.userNumber
